@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>switch开关</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/switch.css">
+</head>
+<body>
+	<div class="bs-docs-example">
+	    <div id="mySwitch" class="switch">
+	        <input type="checkbox" checked />
+	    </div>
+	</div>
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script src="./static/switch.js"></script>
+<script type="text/javascript">
+	$('#mySwitch').on('switch-change', function (e, data) {
+        var $el = $(data.el)
+            , value = data.value;
+        console.log(e, $el, value);
+        console.log(data);
+    });
+</script>
+</body>
+</html>
