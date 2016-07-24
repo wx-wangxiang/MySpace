@@ -7,8 +7,9 @@ require.config({
 		jquery: 'http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min'
 	}
 });
-require(['jquery', 'modules/scroll/scroll'], function($, scroll) {
-	console.log($('.scroll-bar'));
+require(['jquery', 'modules/scroll/scrollto'], function($, scroll) {
 	var scroll = new scroll.Scroll();
-	scroll.test();
+	$('#top').on('click', function() {
+		scroll.go();
+	})
 })
