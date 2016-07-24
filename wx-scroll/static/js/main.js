@@ -7,9 +7,13 @@ require.config({
 		jquery: 'http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min'
 	}
 });
-require(['jquery', 'modules/scroll/scrollto'], function($, scroll) {
-	var scroll = new scroll.Scroll();
-	$('#top').on('click', function() {
-		scroll.go();
+require(['jquery', 'modules/backtop/backtop'], function($, backtop) {
+	/*new backtop.BackTop('#top',{
+		mode: 'move'
+	})*/
+
+	$('#top').backtop({
+		mode: 'move',
+		speed: 800
 	})
 })
