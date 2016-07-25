@@ -7,13 +7,8 @@ require.config({
 		jquery: 'http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min'
 	}
 });
-require(['jquery', 'modules/backtop/backtop'], function($, backtop) {
+require(['jquery', 'modules/scrollbar/scrollbar'], function($, backtop) {
 	/*new backtop.BackTop('#top',{
 		mode: 'move'
 	})*/
-
-	$('#top').backtop({
-		mode: 'move',
-		speed: 800
-	})
 })

@@ -1,0 +1,30 @@
+/* 滚动内容区 */
+.scroll-wrap{
+	position: relative;
+	width: 100%;
+	height: 300px;
+}
+/* 滚动内容 */
+.scroll-wrap .scroll-cont{
+	height: 100%;
+	padding: 0 15px;
+	overflow: hidden;
+}
+/* 滚动条 */
+.scroll-wrap .scroll-bar{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 10px;
+	height: 100%;
+	background-color: #eaeaea;
+}
+/* 滑块 */
+.scroll-wrap .scroll-slider{
+	position: absolute;
+	top: 0;
+	left: 1px;
+	width: 8px;
+	height: 30px;
+	background-color: #fff;
+}
