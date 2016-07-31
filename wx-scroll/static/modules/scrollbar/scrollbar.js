@@ -33,14 +33,15 @@ define(['jquery', 'css!./scrollbar.css'], function($) {
 			//滚动条滑块对象，必填项
 			this.$slider = $(opts.sliderSelector);
 			//滚动条对象
-			this.$bar = opts.barSelector ? $(opts.barSelector) : self.$slider.parent();
+			this.$bar = opts.barSelector ? $(opts.barSelector) : this.$slider.parent();
 			//获取文档对象
-			this.$doc = $(doc);
+			this.$doc = $(document);
 			this._initSliderDragEvent()._bindContScroll();
 		},
 		_initSliderDragEvent: function() {
-			var slider = this.$slider;
-				sliderEl = slider[0];
+			var slider = this.$slider,
+				sliderEl = slider[0],
+				_this = this;
 			if(sliderEl) {
 				var doc = this.$doc,
 					dragStartPagePosition,
@@ -52,6 +53,7 @@ define(['jquery', 'css!./scrollbar.css'], function($) {
 					if(dragStartPagePosition == null) {
 						return;
 					}
+					console.log(dragStartPagePosition, e.pageY, dragContBarRate);
 					_this.scrollTo(dragStartScrollPosition + (e.pageY - dragStartPagePosition) * dragContBarRate);
 				}
 				slider.on('mousedown', function(e) {
@@ -59,7 +61,8 @@ define(['jquery', 'css!./scrollbar.css'], function($) {
 					console.log('mousedown');
 					dragStartScrollPosition = _this.$cont[0].scrollTop;
 					dragStartPagePosition = e.pageY;
-					dragContBarRate = _this.getMaxScrollPosition / _this.getMaxSliderPosition();
+					dragContBarRate = _this.getMaxScrollPosition() / _this.getMaxSliderPosition();
+					console.log(_this.getMaxScrollPosition(), _this.getMaxSliderPosition());
 					doc.on('mousemove.scroll', mousemoveHandler).on('mouseup.scroll', function(e) {
 						console.log('mouseup');
 						doc.off('.scroll'); 
@@ -75,7 +78,7 @@ define(['jquery', 'css!./scrollbar.css'], function($) {
 			_this.$cont.on('scroll', function(){
 				var sliderEl = _this.$slider && _this.$slider[0];
 				if(sliderEl) {
-					sliderEl.style.top = self.getSliderPosition() + 'px';
+					sliderEl.style.top = _this.getSliderPosition() + 'px';
 				}
 			});
 			return _this;
@@ -109,6 +112,7 @@ define(['jquery', 'css!./scrollbar.css'], function($) {
 		scrollTo: function(positionVal) {
 			var _this = this;
 			_this.$cont.scrollTop(positionVal);
+			console.log(positionVal);
 		}
 	});
 

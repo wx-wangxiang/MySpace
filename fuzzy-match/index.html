@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模糊匹配</title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<h1>模糊匹配插件</h1>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2">
+				<div class="input-group">
+					<input type="text" id="fuzzy" class="form-control">
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<button type="button" onclick="javascript:$('#selectVal').val($('#fuzzy').data('selected'));" class="btn btn-primary">获取选中的项</button>
+			</div>
+			<div class="col-sm-2">
+				<input id="selectVal" class="form-control" type="text" readonly="readonly">
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/require.js/2.1.11/require.min.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/main.js"></script>
+</body>
+</html>
