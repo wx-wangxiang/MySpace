@@ -60,7 +60,7 @@ define(['jquery'], function($) {
 			}.bind(this));
 			this._select.on('change', function(e) {
 				_this._selected = $(this).val();
-				/*用时间发布订阅的方式来传递数据,将组件中选中的数据通过事件传递出去*/
+				/*用事件发布订阅的方式来传递数据,将组件中选中的数据通过事件传递出去*/
 				_this.$el.trigger('matched', {el: $(this), value: _this._selected});
 			})
 		},
