@@ -20,6 +20,7 @@ define(['jquery', 'css!./scrollbar.css'], function($) {
 				wheelStep: 10 //滚轮步长
 			}
 			$.extend(true, _this.opts, opts||{});
+			this.contentRatio = 0; 
 			this._initDomEvent();
 		},
 		/**
@@ -36,7 +37,8 @@ define(['jquery', 'css!./scrollbar.css'], function($) {
 			this.$bar = opts.barSelector ? $(opts.barSelector) : this.$slider.parent();
 			//获取文档对象
 			this.$doc = $(document);
-			this._initSliderDragEvent()._bindContScroll();
+			this._initSliderDragEvent()._bindContScroll()._bindMousewheel();
+			this._update();
 		},
 		_initSliderDragEvent: function() {
 			var slider = this.$slider,
@@ -71,6 +73,10 @@ define(['jquery', 'css!./scrollbar.css'], function($) {
 
 			}
 			return _this;
+		},
+		_update: function(){
+			this.contentRatio = this.$cont.height() / (this.getMaxScrollPosition() + this.$cont.height());
+			this.$slider.css('height', this.$bar.height() * this.contentRatio);
 		},
 		//监听内容的滚动，同步滑块的位置
 		_bindContScroll: function() {
