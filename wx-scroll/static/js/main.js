@@ -16,4 +16,9 @@ require(['jquery', 'modules/scrollbar/scrollbar'], function($, scrollbar) {
 		barSelector: '.scroll-bar',
 		sliderSelector: '.scroll-slider'
 	})
+	$('#addBtn').bind('click', function(e){
+		var html = slider.$cont.html();
+		slider.$cont.html(html + '<br><br>');
+		slider._update();
+	})
 })

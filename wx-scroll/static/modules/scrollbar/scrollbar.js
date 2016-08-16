@@ -77,6 +77,7 @@ define(['jquery', 'css!./scrollbar.css'], function($) {
 		_update: function(){
 			this.contentRatio = this.$cont.height() / (this.getMaxScrollPosition() + this.$cont.height());
 			this.$slider.css('height', this.$bar.height() * this.contentRatio);
+			this.slideTo(this.$cont[0].scrollHeight - this.$bar.height());
 		},
 		//监听内容的滚动，同步滑块的位置
 		_bindContScroll: function() {
@@ -119,6 +120,12 @@ define(['jquery', 'css!./scrollbar.css'], function($) {
 			var _this = this;
 			_this.$cont.scrollTop(positionVal);
 			console.log(positionVal);
+		},
+		slideTo: function(positionVal){
+			var _this = this;
+			_this.$cont.animate({
+				scrollTop: positionVal
+			}, 500);
 		}
 	});
 
