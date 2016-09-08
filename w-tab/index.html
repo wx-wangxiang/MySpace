@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tab效果</title>
+	<style type="text/css">
+		.w-tab-container{
+			position: relative;
+			padding-left: 0px;
+			list-style: none;
+		}
+		.w-tab-container li{
+			float: left;
+		    height: 100%;
+		    padding-right: 11px;
+		    position: relative;
+		    z-index: 1;
+		}
+		.w-tab-container li a{
+			text-decoration: none;
+			color: #3c3c3c;
+		    display: block;
+		    font-size: 16px;
+		    height: 56px;
+		    line-height: 56px;
+		    padding: 0 15px;
+		}
+		.w-tab-hover{
+			background-color: #1dd388;
+		    height: 56px;
+		    opacity: 1;
+		    position: absolute;
+		    top: 0;
+		    transition: all 250ms ease-in-out 0s;
+		    width: 62px;
+		    z-index: 0;
+		}
+		.current_index{
+			left: 0;
+		}
+		.w-tab-container li:nth-child(1).active ~ .w-tab-hover{
+			left: 0px;
+			width: 62px;
+		}
+		.w-tab-container li:nth-child(2).active ~ .w-tab-hover{
+			left: 73px;
+			width: 62px;
+		}
+		.w-tab-container li:nth-child(3).active ~ .w-tab-hover{
+			left: 146px;
+			width: 94px;
+		}
+		.w-tab-container li:nth-child(4).active ~ .w-tab-hover{
+			left: 251px;
+			width: 78px;
+		}
+		.w-tab-container li:nth-child(5).active ~ .w-tab-hover{
+			left: 340px;
+			width: 62px;
+		}
+		.w-tab-container li:nth-child(1):hover ~ .w-tab-hover{
+			left: 0px;
+			width: 62px;
+		}
+		.w-tab-container li:nth-child(2):hover ~ .w-tab-hover{
+			left: 73px;
+			width: 62px;
+		}
+		.w-tab-container li:nth-child(3):hover ~ .w-tab-hover{
+			left: 146px;
+			width: 94px;
+		}
+		.w-tab-container li:nth-child(4):hover ~ .w-tab-hover{
+			left: 251px;
+			width: 78px;
+		}
+		.w-tab-container li:nth-child(5):hover ~ .w-tab-hover{
+			left: 340px;
+			width: 62px;
+		}
+	</style>
+</head>
+<body>
+	<ul class="w-tab-container">
+		<li class="w-tab">
+			<a href="javascript:;">首页</a>
+		</li>
+		<li class="w-tab">
+			<a href="javascript:;">全部</a>
+		</li>
+		<li class="w-tab">
+			<a href="javascript:;">分类内容</a>
+		</li>
+		<li class="w-tab">
+			<a href="javascript:;">新发现</a>
+		</li>
+		<li class="w-tab">
+			<a href="javascript:;">首页</a>
+		</li>
+		<div class="w-tab-hover current_index"></div>
+	</ul>
+</body>
+<script type="text/javascript">
+	window.onload = function(){
+		var w_tabs = document.querySelectorAll('.w-tab');
+		for(var i = 0; i < w_tabs.length; i++){
+			w_tabs[i].onclick = function(){
+				var currentTab = document.querySelector('.active');
+				if(currentTab){
+					removeClass(currentTab, 'active');
+				}
+				addClass(this, 'active');
+			}
+		}
+	}
+	
+	/**
+     * add class for the specified node
+     * @param node
+     * @param str
+     */
+	function addClass(node, str) {
+        if (!new RegExp('(^|\\s+)' + str).test(node.className)) {
+            node.className += " " + str;
+        }
+	}
+	/**
+     * remove class for the specified node
+     * @param node
+     * @param str
+     */
+    function removeClass (node, str) {
+        node.className = node.className.replace(new RegExp("(^|\\s+)" + str), "");
+	}
+</script>
+</html>
